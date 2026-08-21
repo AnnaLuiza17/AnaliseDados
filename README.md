@@ -53,21 +53,42 @@ ANALISEDADOS/
 
 ---
 
-## 📦 Como Instalar e Executar Localmente
+## 🔧 Configuração do Ambiente e Instalação (Passo a Passo)
 
-Siga os passos abaixo no terminal para rodar o dashboard no seu computador:
+Se você deseja recriar o ambiente de desenvolvimento exatamente como foi configurado neste projeto, execute os seguintes comandos no seu terminal (PowerShell/Prompt de Comando):
 
-### 1. Clonar ou Baixar o Projeto
-Baixe os arquivos deste repositório para uma pasta local na sua máquina.
-
-### 2. Instalar as Dependências do Projeto
-Execute o comando de instalação do gerenciador de pacotes do Python para garantir todas as bibliotecas necessárias:
+### 1. Criar o Ambiente Virtual (Venv)
+Isso garante que as bibliotecas do projeto fiquem isoladas na pasta `.venv` do projeto:
 ```bash
-pip install streamlit pandas openpyxl
+python -m venv .venv
 ```
 
-### 3. Executar a Aplicação
-Inicie o servidor local do Streamlit apontando para o seu arquivo principal de código (caso seu arquivo tenha outro nome, substitua `scraping.py` pelo nome correto):
+### 2. Liberar Permissão de Execução (Apenas Windows - PowerShell)
+Caso o terminal bloqueie a ativação de scripts externos, execute este comando com privilégios de usuário:
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+```
+
+### 3. Ativar o Ambiente Virtual
+Ative a sua `.venv` para que todas as instalações sejam feitas dentro dela:
+```bash
+.venv\Scripts\activate
+```
+
+### 4. Instalar as Dependências do Sistema
+Com o ambiente ativado, instale as bibliotecas necessárias para ler o Excel e rodar o dashboard:
+```bash
+pip install pandas openpyxl streamlit
+```
+
+### 5. Atualizar o Gerenciador de Pacotes (Opcional)
+Garante que o seu instalador `pip` esteja na versão mais recente e segura:
+```bash
+python.exe -m pip install --upgrade pip
+```
+
+### 6. Executar o Dashboard Interativo
+Para abrir o painel web no seu navegador, utilize o comando oficial do Streamlit (não utilize `python scraping.py`):
 ```bash
 streamlit run scraping.py
 ```
